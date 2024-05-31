@@ -47,41 +47,6 @@ def home():
         weekday=weekday
     )
 
-# @app.route('/movie/<int:id>/')
-# def movie(id):
-#     movie=Movie.query.get(id)
-#     user_movie = UserMovie.query.filter_by(user_id=current_user.id, movie_id=id).first() if current_user.is_authenticated else None
-#     user_rating = user_movie.rating if user_movie else None
-#     return render_template('movie.html', title=movie.title, movie=movie, user_rating=user_rating, **context)
-
-# @app.route('/add/<int:id>/', methods=['POST'])
-# def add(id):
-#     new_movie = UserMovie(user_id=current_user.id, movie_id=id, rating=request.form.get('rating'))
-#     db.session.add(new_movie)
-#     db.session.commit()
-#     return redirect(url_for('movie', id=id))
-
-# @app.route('/delete/<int:id>/', methods=['POST'])
-# def delete(id):
-#     movie = UserMovie.query.filter_by(user_id=current_user.id, movie_id=id).first()
-#     db.session.delete(movie)
-#     db.session.commit()
-#     return redirect(url_for('movie', id=id))
-
-# @app.route('/edit/<int:id>/', methods=['POST'])
-# def edit(id):
-#     movie = UserMovie.query.filter_by(user_id=current_user.id, movie_id=id).first()
-#     db.session.delete(movie)
-#     db.session.commit()
-#     new_movie = UserMovie(user_id=current_user.id, movie_id=id, rating=request.form.get('rating'))
-#     db.session.add(new_movie)
-#     db.session.commit()
-#     return redirect(url_for('movie', id=id))
-
-# @app.route('/about/') 
-# def about():
-#     return 'About Hello World!'
-
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
