@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+    <div class="channel-grid">
+        <div>
+            <h2>Update user</h2>
+            <form method="post">
+                {{ updateuserform.hidden_tag() }}
+                {{ updateuserform.id.label }} {{ updateuserform.id }}
+                {{ updateuserform.name.label }} {{ updateuserform.name }}
+                {{ updateuserform.email.label }} {{ updateuserform.email }}
+                {{ updateuserform.password.label }} {{ updateuserform.password }}
+                {{ updateuserform.is_superuser.label }} {{ updateuserform.is_superuser }}
+                {{ updateuserform.updateusersubmit() }}
+            </form>
+            
+            <h2>Delete user</h2>
+            <form method="post">
+                {{ deleteuserform.hidden_tag() }}
+                {{ deleteuserform.id.label }} {{ deleteuserform.id }}
+                {{ deleteuserform.deleteusersubmit() }}
+            </form>
+        </div>
+        
+    
+        <div>
+            <h2>Create channel</h2>
+            <form method="post">
+                {{ createchannelform.hidden_tag() }}
+                {{ createchannelform.title.label }} {{ createchannelform.title }}
+                {{ createchannelform.createchannelsubmit() }}
+            </form>
+            <h2>Update channel</h2>
+            <form method="post">
+                {{ updatechannelform.hidden_tag() }}
+                {{ updatechannelform.id.label }} {{ updatechannelform.id }}
+                {{ updatechannelform.title.label }} {{ updatechannelform.title }}
+                {{ updatechannelform.updatechannelsubmit() }}
+            </form>
+            <h2>Delete channel</h2>
+            <form method="post">
+                {{ deletechannelform.hidden_tag() }}
+                {{ deletechannelform.id.label }} {{ deletechannelform.id }}
+                {{ deletechannelform.deletechannelsubmit() }}
+            </form>
+        </div>
+        
+        
+        <div>
+            <h2>Create program</h2>
+            <form method="post">
+                {{ createprogramform.hidden_tag() }}
+                {{ createprogramform.title.label }} {{ createprogramform.title }}
+                {{ createprogramform.start_time.label }} {{ createprogramform.start_time }}
+                {{ createprogramform.weekday.label }} {{ createprogramform.weekday }}
+                {{ createprogramform.channel_id.label }} {{ createprogramform.channel_id }}
+                {{ createprogramform.createprogramsubmit() }}
+            </form>
+            <h2>Update program</h2>
+            <form method="post">
+                {{ updateprogramform.hidden_tag() }}
+                {{ updateprogramform.programid.label }} {{ updateprogramform.programid }}
+                {{ updateprogramform.title.label }} {{ updateprogramform.title }}
+                {{ updateprogramform.start_time.label }} {{ updateprogramform.start_time }}
+                {{ updateprogramform.weekday.label }} {{ updateprogramform.weekday }}
+                {{ updateprogramform.channel_id.label }} {{ updateprogramform.channel_id }}
+                {{ updateprogramform.updateprogramsubmit() }}
+            </form>
+            <h2>Delete program</h2>
+            <form method="post">
+                {{ deleteprogramform.hidden_tag() }}
+                {{ deleteprogramform.id.label }} {{ deleteprogramform.id }}
+                {{ deleteprogramform.deleteprogramsubmit() }}
+            </form>
+        </div>
+    </div>
+    <br>
+    <h1>All users</h1>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>Email</td>
+            <td>is_superuser</td>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.is_superuser}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</main>
+
+
+
+
+{% endblock %}

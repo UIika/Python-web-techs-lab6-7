@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+
+<body>
+    <header>
+        <div><label id="clock"></label></div>
+        <h1><a href="/">Телепрограма ІО-14 Риндя Ілля</a></h1>
+        <nav>
+            <ul>
+                {% if current_user.is_authenticated %}
+                <li>you are logged in as {{current_user.name}}</li>
+                <li>&nbsp</li>
+                <li>&nbsp</li>
+                <li><a href="/logout">Log out</a></li>
+                {% if current_user.is_superuser %}
+                    <li><a href="/admin">Admin page</a></li>
+                {% endif %}
+                {% else %}
+                <li><a href="/login">Log in </a></li>
+                <li><a href="/signup">Sign up</a></li>
+                {% endif %}
+                
+            </ul>
+        </nav>
+    </header>
+    <div>
+        {% block content %}{% endblock content %}
+    </div>
+    <script>
+
+        var clockElement = document.getElementById( "clock" );
+
+        function updateClock(clock){
+            clock.innerHTML = new Date().toLocaleDateString('uk-UA', {
+                weekday:"long",
+                year:"numeric",
+                month:"short",
+                day:"numeric",
+                hour:"numeric",
+                minute:"numeric",
+                second:"numeric"});
+        }
+        updateClock(clock)
+
+        setInterval(function(){
+            updateClock(clockElement);
+        },1000);
+
+    </script>
+</body>
+</html>

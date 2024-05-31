@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["UIika <1lys.rynd@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sqlalchemy = "^2.0.29"
+flask-sqlalchemy = "^3.1.1"
+flask-login = "^0.6.3"
+alembic = "^1.13.1"
+flask-script = "^2.0.6"
+flask-migrate = "^4.0.7"
+wtforms = "^3.1.2"
+flask-wtf = "^1.2.1"
+email-validator = "^2.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
